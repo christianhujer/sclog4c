@@ -9,7 +9,10 @@
 int main(void)
 {
     const char *functionName = __func__;
+
+    sclog4c_level = INFO;
+
     logm(ERROR, "buh!");
-    logm(INFO, "%s %s", "foo", functionName);
+    logm(INFO, "This is %s in function %s.", "foo", functionName);
     return 0;
 }
