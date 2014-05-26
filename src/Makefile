@@ -4,7 +4,10 @@
 # See file LICENSE in the root directory of this project.
 
 CPPFLAGS:=-I../include -MMD
+ARFLAGS:=-crs
+
 .PHONY: all
+.PRECIOUS: %.o
 all: sclog4c.a(sclog4c.o)
 
 .PHONY: clean
