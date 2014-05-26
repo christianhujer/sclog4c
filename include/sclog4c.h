@@ -4,6 +4,9 @@
  * See file LICENSE in the root directory of this project.
  */
 
+#ifndef SCLOG4C_H
+#define SCLOG4C_H
+
 #include <limits.h>
 #include <stdio.h>
 
@@ -56,4 +59,6 @@ extern const char *describe(int level);
 #else
 #warning Disabling logm on this compiler.
 #define logm(X, Y)
+#endif
+
 #endif
