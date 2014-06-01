@@ -66,8 +66,7 @@ extern const char *describe(int level);
         } \
     } while (0)
 #else
-#warning Disabling logm on this compiler.
-#define logm(X, Y)
+#error Requires a preprocessor which supports C99 __VA_ARGS__.
 #endif
 
 #endif
