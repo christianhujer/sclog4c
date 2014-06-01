@@ -56,7 +56,7 @@ extern const char *describe(int level);
         if (level >= sclog4c_level) \
             fprintf(stderr, "%s:%d: %s: In function %s: " fmt "\n", __FILE__, __LINE__, describe(level), __FUNCTION__, __VA_ARGS__); \
     } while (0)
-#elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
+#elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L))
 #define logm(level, ...) \
     do { \
         if (level >= sclog4c_level) { \
