@@ -3,7 +3,8 @@
 # Licensed under LGPLv3.
 # See file LICENSE in the root directory of this project.
 
-CPPFLAGS:=-I../include -MMD
+CPPFLAGS:=-I../include
+CFLAGS:=-MMD --std=gnu99
 ARFLAGS:=-crs
 
 .PHONY: all

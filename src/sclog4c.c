@@ -8,17 +8,26 @@
 
 int sclog4c_level = WARNING;
 
+static const struct sclog4c_messages {
+    int level;
+    const char *message;
+} sclog4c_messages[] = {
+    { FATAL,    "fatal" },
+    { SEVERE,   "severe" },
+    { ERROR,    "error" },
+    { WARNING,  "warning" },
+    { INFO,     "info" },
+    { CONFIG,   "config" },
+    { DEBUG,    "debug" },
+    { FINE,     "fine" },
+    { FINER,    "finer" },
+    { FINEST,   "finest" },
+};
+
 const char *describe(int level)
 {
-    if (level >= FATAL  ) return "fatal";
-    if (level >= SEVERE ) return "severe";
-    if (level >= ERROR  ) return "error";
-    if (level >= WARNING) return "warning";
-    if (level >= INFO   ) return "info";
-    if (level >= CONFIG ) return "config";
-    if (level >= DEBUG  ) return "debug";
-    if (level >= FINE   ) return "fine";
-    if (level >= FINER  ) return "finer";
-    if (level >= FINEST ) return "finest";
+    for (int i = 0; i < sizeof(sclog4c_messages) / sizeof(sclog4c_messages[0]); i++)
+        if (level >= sclog4c_messages[i].level)
+            return sclog4c_messages[i].message;
     return "all";
 }
