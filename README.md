@@ -34,3 +34,13 @@ Planned Features:
 - Per-module-logging
 - Tiny logging for embedded devices with severely resource constraint environments (i.e. 8051).
 - More convenient API.  Note that this will come a bit later to ensure that other features do not require changes to existing API.
+
+Features not planned:
+- XML configuration file, XML logging.
+  This is a simple logging framework.
+  If you're looking for something powerful, like a "Log4J" for C, use log4c or zlog.
+
+
+Other logging frameworks:
+- log4c http://log4c.sourceforge.net/
+- zlog https://github.com/HardySimpson/zlog
