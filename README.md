@@ -52,4 +52,5 @@ compilation works, but logging doesn't work:
 
 ## Other logging frameworks for C
 - log4c http://log4c.sourceforge.net/
+- syslog facility (mostly for daemons) http://tools.ietf.org/html/rfc5424 / http://man7.org/linux/man-pages/man3/syslog.3.html
 - zlog https://github.com/HardySimpson/zlog
