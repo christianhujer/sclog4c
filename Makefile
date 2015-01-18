@@ -3,13 +3,26 @@
 # Licensed under LGPLv3.
 # See file LICENSE in the root directory of this project.
 
-INCDIR:=/usr/local/include/
-LIBDIR:=/usr/local/lib/
+config:=config.mak
+
+# Lazy expansion of these variables is required to show variable references in help text.
+
+## Installation prefix ($(PREFIX))
+PREFIX=/usr/local/
+
+## Installation directory for include files ($(INCDIR)).
+INCDIR=$(PREFIX)include/
+
+## Installation directory for archive files ($(LIBDIR)).
+LIBDIR=$(PREFIX)lib/
+
+-include $(config)
 
 STEPS:=all clean
 DELEGATES:=src test
 
 define template
+.PHONY: $(1)
 $(1): $$(addsuffix +$(1),$(DELEGATES))
 ALL+=$$(addsuffix +$(1),$(DELEGATES))
 endef
@@ -20,19 +33,49 @@ $(foreach step,$(STEPS),$(eval $(call template,$(step))))
 $(ALL):
 	$(MAKE) -C $(subst +, ,$@)
 
+## Builds everything and runs all tests.
+all:
+
+## Removes most auto-generated files.
+clean:
+
 .PHONY: install
+help: export PREFIX:=$(value PREFIX)
+help: export LIBDIR:=$(value LIBDIR)
+help: export INCDIR:=$(value INCDIR)
+## Installs sclog4c.
+# Currently, it would install it into the following locations:
+# PREFIX: $(PREFIX)
+# LIBDIR: $(LIBDIR)
+# INCDIR: $(INCDIR)
 install: \
     $(LIBDIR)sclog4c.a \
     $(INCDIR)sclog4c.h \
 
 $(LIBDIR) $(INCDIR):
-	mkdir -p $@
+	install -d $@
 
 src/sclog4c.a:
 	$(MAKE) -C $(dir $@)
 
 $(LIBDIR)sclog4c.a: src/sclog4c.a | $(LIBDIR)
-	cp $^ $@
+	install -t $(LIBDIR) $^
 
 $(INCDIR)sclog4c.h: include/sclog4c.h | $(INCDIR)
-	cp $^ $@
+	install -t $(INCDIR) $^
+
+.PHONY: distclean
+## Removes all files that should not be part of a distribution archive.
+distclean: clean
+	$(RM) config.mak
+
+.PHONY: configure
+help: export config:=$(value config)
+## Writes the current configuration to file $(config).
+configure:
+	$(RM) $(config)
+	echo "PREFIX:=$(value PREFIX)" >>$(config)
+	echo "INCDIR:=$(value INCDIR)" >>$(config)
+	echo "LIBDIR:=$(value LIBDIR)" >>$(config)
+
+-include Help.mak
