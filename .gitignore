@@ -1,2 +1,3 @@
 *.[ado]
 *.exe
+.help.mak

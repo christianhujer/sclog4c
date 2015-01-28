@@ -40,9 +40,6 @@ all:
 clean:
 
 .PHONY: install
-help: export PREFIX:=$(value PREFIX)
-help: export LIBDIR:=$(value LIBDIR)
-help: export INCDIR:=$(value INCDIR)
 ## Installs sclog4c.
 # Currently, it would install it into the following locations:
 # PREFIX: $(PREFIX)
@@ -78,4 +75,4 @@ configure:
 	echo "INCDIR:=$(value INCDIR)" >>$(config)
 	echo "LIBDIR:=$(value LIBDIR)" >>$(config)
 
--include Help.mak
+-include makehelp/Help.mak
