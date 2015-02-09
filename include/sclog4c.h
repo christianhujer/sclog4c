@@ -36,7 +36,7 @@ extern int sclog4c_level;
  */
 extern const char *describe(int level);
 
-/** Generates a formatted log message.
+/** Prints a formatted log message to stderr.
  * @param level
  *      Level for which the log message is to be generated.
  * @param fmt
@@ -66,7 +66,14 @@ extern const char *describe(int level);
         } \
     } while (0)
 #else
-#error Requires a preprocessor which supports C99 __VA_ARGS__.
+#define logm(level, ...) \
+    do { \
+        if (level >= sclog4c_level) { \
+            fprintf(stderr, "%s:%d: %s: ", __FILE__, __LINE__, describe(level)); \
+            fprintf(stderr, __VA_ARGS__); \
+            fprintf(stderr, "\n"); \
+        } \
+    } while (0)
 #endif
 
 #endif
