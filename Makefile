@@ -76,3 +76,6 @@ configure:
 	echo "LIBDIR:=$(value LIBDIR)" >>$(config)
 
 -include makehelp/Help.mak
+
+control.Description=sclog4c - simple java.util.logging style logging for C.
+-include makedist/MakeDist.mak
