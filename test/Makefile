@@ -3,10 +3,11 @@
 # Licensed under LGPLv3.
 # See file LICENSE in the root directory of this project.
 
-CPPFLAGS:=-I../include -MMD
+CPPFLAGS:=-I../include -MMD -DSCLOG4C_LEVEL=CONFIG
 .PHONY: all
 all: test
-	./test
+	! grep unexpected ./test # Checks that compile-time elimination works (more a check of your compiler than sclog4c).
+	! ./test 2>&1 >/dev/null | grep unexpected
 
 test: ../src/sclog4c.a test.o
 
@@ -14,4 +15,4 @@ include $(wildcard *.d)
 
 .PHONY: clean
 clean:
-	$(RM) test *.[od]
+	$(RM) test *.[adios]

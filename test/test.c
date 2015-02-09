@@ -13,6 +13,7 @@ int main(void)
     sclog4c_level = INFO;
 
     logm(ERROR, "buh (expected)!");
-    logm(INFO, "This is %s in function %s.", "foo", functionName);
+    logm(DEBUG, "debug (unexpected)!");
+    logm(INFO, "This is %s in function %s (expected).", "foo", functionName);
     return 0;
 }

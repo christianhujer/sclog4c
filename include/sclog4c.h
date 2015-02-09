@@ -1,4 +1,4 @@
-/* Copyright (C) 2014 Christian Hujer.
+/* Copyright (C) 2014 - 2015 Christian Hujer.
  * All rights reserved.
  * Licensed under LGPLv3.
  * See file LICENSE in the root directory of this project.
@@ -26,6 +26,11 @@ enum LogLevel {
     OFF = INT_MAX
 };
 
+#if !defined(SCLOG4C_LEVEL) || defined(_doxygen)
+/** The global log level for compile-time log decision. */
+#define SCLOG4C_LEVEL ALL
+#endif
+
 /** The global log level. */
 extern int sclog4c_level;
 
@@ -39,6 +44,7 @@ extern const char *describe(int level);
 /** Prints a formatted log message to stderr.
  * @param level
  *      Level for which the log message is to be generated.
+ *      Note this should not be an expression with side effects because the macro might evaluate this more than once.
  * @param fmt
  *      Format string for the log message.
  *      This must be a string literal.
@@ -47,19 +53,19 @@ extern const char *describe(int level);
  */
 #if defined(_doxygen) || defined(__GNUC__) || defined(__CC_ARM)
 #define logm(level, fmt, ...) \
-    do { \
+    if (level >= SCLOG4C_LEVEL) do { \
         if (level >= sclog4c_level) \
             fprintf(stderr, "%s:%d: %s: In function %s: " fmt "\n", __FILE__, __LINE__, describe(level), __func__, ##__VA_ARGS__); \
     } while (0)
 #elif defined(__MSC_VER) && (__MSC_VER >= 1400)
 #define logm(level, fmt, ...) \
-    do { \
+    if (level >= SCLOG4C_LEVEL) do { \
         if (level >= sclog4c_level) \
             fprintf(stderr, "%s:%d: %s: In function %s: " fmt "\n", __FILE__, __LINE__, describe(level), __FUNCTION__, __VA_ARGS__); \
     } while (0)
 #elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L))
 #define logm(level, ...) \
-    do { \
+    if (level >= SCLOG4C_LEVEL) do { \
         if (level >= sclog4c_level) { \
             fprintf(stderr, "%s:%d: %s: In function %s: ", __FILE__, __LINE__, describe(level), __func__); \
             fprintf(stderr, __VA_ARGS__); \
@@ -68,7 +74,7 @@ extern const char *describe(int level);
     } while (0)
 #else
 #define logm(level, ...) \
-    do { \
+    if (level >= SCLOG4C_LEVEL) do { \
         if (level >= sclog4c_level) { \
             fprintf(stderr, "%s:%d: %s: ", __FILE__, __LINE__, describe(level)); \
             fprintf(stderr, __VA_ARGS__); \
