@@ -41,6 +41,7 @@ extern const char *describe(int level);
  *      Level for which the log message is to be generated.
  * @param fmt
  *      Format string for the log message.
+ *      This must be a string literal.
  * @param ...
  *      Format arguments.
  */
