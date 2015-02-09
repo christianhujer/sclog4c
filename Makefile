@@ -75,7 +75,7 @@ configure:
 	echo "INCDIR:=$(value INCDIR)" >>$(config)
 	echo "LIBDIR:=$(value LIBDIR)" >>$(config)
 
--include makehelp/Help.mak
-
 control.Description=sclog4c - simple java.util.logging style logging for C.
 -include makedist/MakeDist.mak
+
+-include makehelp/Help.mak
