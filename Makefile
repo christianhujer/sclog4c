@@ -46,16 +46,16 @@ clean:
 # LIBDIR: $(LIBDIR)
 # INCDIR: $(INCDIR)
 install: \
-    $(LIBDIR)sclog4c.a \
+    $(LIBDIR)libsclog4c.a \
     $(INCDIR)sclog4c.h \
 
 $(LIBDIR) $(INCDIR):
 	install -d $@
 
-src/sclog4c.a:
+src/libsclog4c.a:
 	$(MAKE) -C $(dir $@)
 
-$(LIBDIR)sclog4c.a: src/sclog4c.a | $(LIBDIR)
+$(LIBDIR)libsclog4c.a: src/libsclog4c.a | $(LIBDIR)
 	install -t $(LIBDIR) $^
 
 $(INCDIR)sclog4c.h: include/sclog4c.h | $(INCDIR)

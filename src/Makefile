@@ -9,7 +9,7 @@ ARFLAGS:=-crs
 
 .PHONY: all
 .PRECIOUS: %.o
-all: sclog4c.a(sclog4c.o)
+all: libsclog4c.a(sclog4c.o)
 
 .PHONY: clean
 clean:
