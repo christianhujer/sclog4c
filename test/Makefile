@@ -9,7 +9,7 @@ all: test
 	! grep unexpected ./test # Checks that compile-time elimination works (more a check of your compiler than sclog4c).
 	! ./test 2>&1 >/dev/null | grep unexpected
 
-test: ../src/sclog4c.a test.o
+test: ../src/libsclog4c.a test.o
 
 include $(wildcard *.d)
 
