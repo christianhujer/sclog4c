@@ -31,6 +31,10 @@ enum LogLevel {
 #define SCLOG4C_LEVEL ALL
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** The global log level. */
 extern int sclog4c_level;
 
@@ -81,6 +85,10 @@ extern const char *describe(int level);
             fprintf(stderr, "\n"); \
         } \
     } while (0)
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif
