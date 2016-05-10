@@ -26,7 +26,8 @@ static const struct sclog4c_messages {
 
 const char *describe(int level)
 {
-    for (int i = 0; i < sizeof(sclog4c_messages) / sizeof(sclog4c_messages[0]); i++)
+    size_t i;
+    for (i = 0; i < sizeof(sclog4c_messages) / sizeof(sclog4c_messages[0]); i++)
         if (level >= sclog4c_messages[i].level)
             return sclog4c_messages[i].message;
     return "all";

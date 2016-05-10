@@ -4,7 +4,7 @@
 # See file LICENSE in the root directory of this project.
 
 CPPFLAGS:=-I../include
-CFLAGS:=-MMD --std=gnu99
+CFLAGS:=-MMD --std=c99 -W -Wall -pedantic -Werror
 ARFLAGS:=-crs
 
 .PHONY: all
