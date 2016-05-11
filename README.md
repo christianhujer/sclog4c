@@ -6,7 +6,7 @@ Simple configurable logging for C.
 
 ### Supported
 - GCC
-    Tested versions: 4.5.2, 4.9.1
+    Tested versions: 4.5.2, 4.9.1, 5.3.1
     Any version 4.5.2 or newer should work.
     Older versions probably work, too, as long as they implement `__VA_ARGS__` and `##__VA_ARGS__`.
     To build with `gcc`, simply use `make` on systems where GCC is default, otherwise use `make CC=gcc`.
