@@ -4,7 +4,7 @@
  * See file LICENSE in the root directory of this project.
  */
 
-#include "sclog4c.h"
+#include "sclog4c/sclog4c.h"
 
 int sclog4c_level = WARNING;
 

@@ -47,19 +47,19 @@ clean:
 # INCDIR: $(INCDIR)
 install: \
     $(LIBDIR)libsclog4c.a \
-    $(INCDIR)sclog4c.h \
+    $(INCDIR)sclog4c/sclog4c.h \
 
-$(LIBDIR) $(INCDIR):
-	install -d $@
+$(LIBDIR) $(INCDIR) $(INCDIR)sclog4c/:
+#	install -d $@
 
 src/libsclog4c.a:
 	$(MAKE) -C $(dir $@)
 
 $(LIBDIR)libsclog4c.a: src/libsclog4c.a | $(LIBDIR)
-	install -t $(LIBDIR) $^
+	install -D -m 644 -t $(dir $@) $^
 
-$(INCDIR)sclog4c.h: include/sclog4c.h | $(INCDIR)
-	install -t $(INCDIR) $^
+$(INCDIR)sclog4c/sclog4c.h: include/sclog4c/sclog4c.h | $(INCDIR)sclog4c/
+	install -D -m 644 -t $(dir $@) $^
 
 .PHONY: distclean
 ## Removes all files that should not be part of a distribution archive.
