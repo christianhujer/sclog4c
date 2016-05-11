@@ -18,4 +18,4 @@ include $(wildcard *.d)
 
 .PHONY: clean
 clean:
-	$(RM) test *.[adios]
+	$(RM) test test2 *.[adios]
