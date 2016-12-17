@@ -10,6 +10,10 @@
 #include <limits.h>
 #include <stdio.h>
 
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L) && !defined(__STDC_NO_THREADS__) || (__STDC_NO_THREADS__ != 1)
+#include <threads.h>
+#endif
+
 /** The predefined log levels. */
 enum LogLevel {
     SL4C_ALL = INT_MIN,
@@ -36,7 +40,11 @@ extern "C" {
 #endif
 
 /** The global log level. */
-extern int sclog4c_level;
+extern
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L) && !defined(__STDC_NO_THREADS__) || (__STDC_NO_THREADS__ != 1)
+thread_local
+#endif
+int sclog4c_level;
 
 /** Returns a textual description of the specified @p level.
  * @param level

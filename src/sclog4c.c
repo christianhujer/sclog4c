@@ -6,6 +6,9 @@
 
 #include "sclog4c/sclog4c.h"
 
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ > 201112L) && !defined(__STDC_NO_THREADS__) || (__STDC_NO_THREADS__ != 1)
+_Thread_local
+#endif
 int sclog4c_level = SL4C_WARNING;
 
 static const struct sclog4c_messages {
