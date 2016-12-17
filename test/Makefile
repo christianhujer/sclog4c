@@ -3,7 +3,7 @@
 # Licensed under LGPLv3.
 # See file LICENSE in the root directory of this project.
 
-CPPFLAGS:=-I../include -MMD -DSCLOG4C_LEVEL=CONFIG
+CPPFLAGS:=-I../include -MMD -DSCLOG4C_LEVEL=SL4C_CONFIG
 .PHONY: all
 all: test test2
 	! grep unexpected ./test # Checks that compile-time elimination works (more a check of your compiler than sclog4c).

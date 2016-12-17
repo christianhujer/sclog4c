@@ -10,10 +10,10 @@ int main(void)
 {
     const char *functionName = __func__;
 
-    sclog4c_level = INFO;
+    sclog4c_level = SL4C_INFO;
 
-    logm(ERROR, "buh (expected)!");
-    logm(DEBUG, "debug (unexpected)!");
-    logm(INFO, "This is %s in function %s (expected).", "foo", functionName);
+    logm(SL4C_ERROR, "buh (expected)!");
+    logm(SL4C_DEBUG, "debug (unexpected)!");
+    logm(SL4C_INFO, "This is %s in function %s (expected).", "foo", functionName);
     return 0;
 }

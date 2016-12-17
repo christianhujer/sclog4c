@@ -12,23 +12,23 @@
 
 /** The predefined log levels. */
 enum LogLevel {
-    ALL = INT_MIN,
-    FINEST = 300,
-    FINER = 400,
-    FINE = 500,
-    DEBUG = 600,
-    CONFIG = 700,
-    INFO = 800,
-    WARNING = 900,
-    ERROR = 950,
-    SEVERE = 1000,
-    FATAL = 1100,
-    OFF = INT_MAX
+    SL4C_ALL = INT_MIN,
+    SL4C_FINEST = 300,
+    SL4C_FINER = 400,
+    SL4C_FINE = 500,
+    SL4C_DEBUG = 600,
+    SL4C_CONFIG = 700,
+    SL4C_INFO = 800,
+    SL4C_WARNING = 900,
+    SL4C_ERROR = 950,
+    SL4C_SEVERE = 1000,
+    SL4C_FATAL = 1100,
+    SL4C_OFF = INT_MAX
 };
 
 #if !defined(SCLOG4C_LEVEL) || defined(_doxygen)
 /** The global log level for compile-time log decision. */
-#define SCLOG4C_LEVEL ALL
+#define SCLOG4C_LEVEL SL4C_ALL
 #endif
 
 #ifdef __cplusplus
