@@ -48,7 +48,7 @@ compilation works, but logging doesn't work:
   This is important for multitasking and multithreading to prevent distorted output.
   This only works if the compiler supports a form of `##__VA_ARGS__`, i.e. doesn't fall over if an empty `__VA_ARGS__` is used after comma.
 - Compile-time loglevel configuration via macro `SCLOG4C_LEVEL` for code size reduction.
-  You can specify `SCLOG4C_LEVEL` on a per-module basis, like `xzy.o: CPPFLAGS+=-DSCLOG4C_LEVEL=DEBUG` in your `Makefile`.
+  You can specify `SCLOG4C_LEVEL` on a per-module basis, like `xzy.o: CPPFLAGS+=-DSCLOG4C_LEVEL=SL4C_DEBUG` in your `Makefile`.
   Note: In order for this feature to work nicely, it's expected that the compiler removes dead code.
   You can check if your compiler does so by telling your compiler to keep temp files (for `gcc` and `clang` this is `CFLAGS+=-save-temps`) and look at the assembly file (usually `.s`).
 
@@ -66,8 +66,8 @@ compilation works, but logging doesn't work:
 
 To use sclog4c, `#include <sclog4c/sclog4c.h>` at the start of your source file.
 Invoke the `logm()` macro to perform logging.
-Use the `sclog4c_level` variable to control the log level at runtime (defaults to `ALL`).
-Use the `SCLOG4C_LEVEL` macro to control the log level at compile time (defaults to `WARNING`).
+Use the `sclog4c_level` variable to control the log level at runtime (defaults to `SL4C_ALL`).
+Use the `SCLOG4C_LEVEL` macro to control the log level at compile time (defaults to `SL4C_WARNING`).
 
 Example:
 
@@ -76,8 +76,8 @@ Example:
 
 int main(int argc, char *argv[])
 {
-    sclog4c_level = ALL;
-    logm(DEBUG, "Program name: %s", argv[0]);
+    sclog4c_level = SL4C_ALL;
+    logm(SL4C_DEBUG, "Program name: %s", argv[0]);
     return 0;
 }
 ~~~~
