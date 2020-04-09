@@ -8,12 +8,12 @@ Simple configurable logging for C.
 
 ### Supported
 - GCC
-    Tested versions: 4.5.2, 4.9.1, 5.3.1
+    Tested versions: 4.5.2, 4.9.1, 5.3.1, 7.5.0
     Any version 4.5.2 or newer should work.
     Older versions probably work, too, as long as they implement `__VA_ARGS__` and `##__VA_ARGS__`.
     To build with `gcc`, simply use `make` on systems where GCC is default, otherwise use `make CC=gcc`.
 - clang
-    Tested versions: 3.5.0
+    Tested versions: 3.5.0, 6.0.0
     Any version 3.5.0 or newer should work.
     Older versions probably work, too, as long as they implement `__VA_ARGS__` and `##_VA_ARGS__`.
     To build with `clang`, simply use `make CC=clang`.
