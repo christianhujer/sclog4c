@@ -1,5 +1,7 @@
 # sclog4c
 
+![C CI](https://github.com/christianhujer/sclog4c/workflows/C%20CI/badge.svg)
+
 Simple configurable logging for C.
 
 ## Compiler Support
